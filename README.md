@@ -9,6 +9,7 @@ individuals move between oceanic bodies between seasons to reproduce potentially
 Without definitive population information stock management can be problematic.
 </p>
 
+[Outline for King Mackerel pipeline](https://github.com/comp-bio-master/grad-project-plan-outline-2022-roberttungate12/blob/master/CompBio_ProjectOutline.md "King Mackerel outline") 
 <h3>Outline for King Mackerel pipeline</h3>
 <ol><em>(09/09/22)</em> <strong>Project idea due</strong>
 <ul>	<li>Project idea submitted on Microsoft forms</li>
@@ -36,8 +37,8 @@ Without definitive population information stock management can be problematic.
 </ol></ul>	
 
 <p>The goals of this project are to automate (to some degree) the inputs and outputs of 
-commands using a popgen dataset. No statistical analyses will be included, but outputs
-will be automated to folders, and to successfully go from the initial file to a .vcf file.
+commands using a popgen dataset within both <code>Bash</code> and <code>R</code>. No statistical analyses will be included, but outputs
+will be automated to folders, and to successfully go from the initial file to a <code>.vcf</code> file.
 </p>
 
 
