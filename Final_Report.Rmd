@@ -1,0 +1,82 @@
+---
+title: "CompBio_FinalReport"
+output: pdf_document
+date: "2022-12-08"
+---
+
+
+## Set up or this script
+Ensure this markdown file in in the same directory as the Arlequin scripts downloaded from Gituhub (https://github.com/roberttungate12/KingMackerel)
+
+```{bash}
+#cd ~/
+
+#git clone (git@github.com:roberttungate12/KingMackerel.git) #with ssh key
+#git clone (https://github.com/roberttungate12/KingMackerel.git) #without ssh key
+
+
+```
+
+### King Mackerel Arelquin Output for Macs
+Arlequin (Excoffier, L. and H.E. L. Lischer (2010) Arlequin suite ver 3.5: A new series of programs to perform
+population genetics analyses under Linux and Windows. Molecular Ecology Resources. 10: 564-567.) is an amazing tool for Population genetic analyses, but in the growing world of technology generalized usage of data platforms and data software is of the upmost importance. While the utilization of Arlequin is vast, but the ability to use the program on Mac computers is non-existent as well as the subsequent HTML outputs. A MacBook user is unable to:
+1. Run the program
+2. Utilize the tree.htm output
+While these issues are easily navigable, these unique set of obstacles have shown to be a nuisance for myself during my thesis. A second optional output from Arlequin is usable on Macs, but without the "tree" navigating the output file is lengthy and cumbersome. Therefore, the purpose of this project was to use bash and R 
+
+```{r setup, include = FALSE}
+#Change working directory to location of this markdown file
+setwd(dirname(rstudioapi::getActiveDocumentContext()$path))
+```
+
+### King Mackerel Arelquin Output for Macs
+
+```{bash}
+#Convert the Arlequin output into a .txt file
+bash htm2txt.sh King_mack_genpop_GvA.htm
+```
+The converted text file can then be run through the Arlequin.Summary.sh bash script to create a text file with summary information about your populations including:
+1. Number of populations
+2. Number of loci per population
+3. Mean heterozygosity in each population
+
+```{bash}
+cd Arlequin.Output
+
+bash Arlequin.Summary.sh King_mack_genpop_GvA.txt
+less Arlequin_Summary.txt
+
+```
+
+After you summary text file is created. Move to R to do some visual representation of your population differentiation. 
+```{r, include = FALSE}
+#load rquired packages
+library(tidyverse)
+library(readxl)
+```
+
+```{r fst_tbl data}
+fst_tbl <- read_xlsx("book1.xlsx", col_names = TRUE)
+```
+
+## For population differentiation, heatmaps are a great way to visualize FST values outputted from Arelquin.
+
+```{r fst heatmap, echo = FALSE}
+fst_tbl %>%
+  ggplot(aes(x = pop1, y = pop2, fill = fst)) + 
+  geom_tile() + 
+  labs(x = "Population 1", y = "Population 2") + 
+  ggtitle("Population differentiation of King Mackerel Stocks") +
+  theme(plot.title = element_text(hjust = 0.5))
+ggsave(filename = 'FST of king mack pops.png', width = 5, height = 5, bg = "transparent")
+
+fst_tbl %>%
+  ggplot(aes(x = pop1, y = pop2, fill = pvalue)) + 
+  geom_tile() + 
+  labs(x = "Population 1", y = "Population 2") + 
+  ggtitle("Population differentiation of King Mackerel Stocks") +
+  theme(plot.title = element_text(hjust = 0.5))
+ggsave(filename = 'FST stat of king mack pops.png', width = 5, height = 5, bg = "transparent")
+```
+
+Using a heat map to visualize the fst values and p-values from software like Arlequin is a great way to represent pariwise differences especially is you have a larger data set was many more populations than 2. For this work a heat map looks very remedial, but the application is still of value. 
