@@ -27,6 +27,7 @@ While these issues are easily navigable, these unique set of obstacles have show
 ```{r setup, include = FALSE}
 #Change working directory to location of this markdown file
 setwd(dirname(rstudioapi::getActiveDocumentContext()$path))
+getwd()
 ```
 
 ### King Mackerel Arelquin Output for Macs
@@ -43,7 +44,7 @@ The converted text file can then be run through the Arlequin.Summary.sh bash scr
 ```{bash}
 cd Arlequin.Output
 
-bash Arlequin.Summary.sh King_mack_genpop_GvA.txt
+bash ../Arlequin.Summary.sh King_mack_genpop_GvA.txt
 less Arlequin_Summary.txt
 
 ```
@@ -79,4 +80,6 @@ fst_tbl %>%
 ggsave(filename = 'FST stat of king mack pops.png', width = 5, height = 5, bg = "transparent")
 ```
 
-Using a heat map to visualize the fst values and p-values from software like Arlequin is a great way to represent pariwise differences especially is you have a larger data set was many more populations than 2. For this work a heat map looks very remedial, but the application is still of value. 
+Using a heat map to visualize the fst values and p-values from software like Arlequin is a great way to represent pairwise differences especially is you have a larger data set was many more populations than 2. For this work a heat map looks very remedial, but the application is still of value. 
+
+At the end of this project I created two bash scripts that follow the linux philosophy: Convert a html file to a text file (htm2txt.sh) and create a summary file from the newly converted text file (Arlequin.Summary.sh). There are some automatins within those scripts such as: creating directories and moving files, but the core of the project was to follow the linux philosophy. In R the goal was to create two graphs to visualize the FST outputs from Arlequin using ggplot2 and geom_tile. Those graphics are then saved to your working directory. 

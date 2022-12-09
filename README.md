@@ -37,8 +37,8 @@ Without definitive population information stock management can be problematic.
 </ol></ul>	
 
 <p>The goals of this project are to automate (to some degree) the inputs and outputs of 
-commands using a popgen dataset within both <code>Bash</code> and <code>R</code>. No statistical analyses will be included, but outputs
-will be automated to folders, and to successfully go from the initial file to a <code>.vcf</code> file.
+commands using an Arelquin output file within both <code>Bash</code> and <code>R</code>. No statistical analyses will be included, but outputs
+will be automated to folders, and to successfully go from the initial Arelquin output file to a summary file and 2 data visuals.
 </p>
 
 
