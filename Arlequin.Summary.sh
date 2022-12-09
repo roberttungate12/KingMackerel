@@ -17,7 +17,7 @@ GlobalAMOVA=$(sed 's/ /,/g' $var1 | tr -s "," "," | grep FST -A 10 | tail -26 | 
 
 (echo "Number of Populations in analysis" $NumPopulations
 echo $Pop1
-echo "Number of Loci for" $Pop1Loci
+echo "Number of Loci:" $Pop1Loci
 echo "Mean Het0 =" $Pop1MeanHet
 echo 
 echo $Pop2
